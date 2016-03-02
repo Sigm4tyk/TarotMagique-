@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tarot Magique</string>
+    <string name="bienvenue">Bienvenue, une petite partie ?</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="buttonJouer">Jouer</string>
+    <string name="buttonRejoindrePartie">Rejoindre partie</string>
+    <string name="derniereCartePiochee">Dernière carte piochée</string>
+    <string name="buttonPiocher">Piocher</string>
+    <string name="checkBoxExcuse">Excuse</string>
+    <string name="textViewJoueur">Joueur</string>
+
+</resources>
