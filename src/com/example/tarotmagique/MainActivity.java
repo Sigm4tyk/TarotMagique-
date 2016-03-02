@@ -1,5 +1,6 @@
 package com.example.tarotmagique;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,11 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 
 				//Toast.makeText(getApplicationContext(), "Ajouter une personne", Toast.LENGTH_LONG).show();
+				/*Intent intent = new Intent(MainActivity.this, TableJoueurActivity.class);
+				startActivity(intent);*/
+				
 				Intent intent = new Intent(MainActivity.this, TableJoueurActivity.class);
+				intent.putExtra("Table", table);
 				startActivity(intent);
 
 				

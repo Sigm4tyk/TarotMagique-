@@ -1,11 +1,12 @@
 package com.example.tarotmagique;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Table implements Parcelable{
+public class Table implements Serializable{
 	
     //La table possède un cercle, une liste de joueurs, le numéro de dernier joueur freeze, maître des pouces etc.
     private static String nomTable;
@@ -52,12 +53,12 @@ public class Table implements Parcelable{
         Collections.shuffle(this.cercle);
 
         //Test
-        for (int i = 0; i < this.cercle.size(); i++) {
+        /*for (int i = 0; i < this.cercle.size(); i++) {
             joueurs.get(0).piocher();
             joueurs.get(1).piocher();
             joueurs.get(2).piocher();
             joueurs.get(3).piocher();
-        }
+        }*/
 
     }
 
@@ -161,9 +162,7 @@ public class Table implements Parcelable{
         cercle.remove(cercle.size() - 1);
     }
 
-    
-    
-    
+    /*
 	@Override
 	public int describeContents() {
 		// TODO Auto-generated method stub
@@ -173,15 +172,52 @@ public class Table implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
-		/*dest.writeString(this.nomTable);
-	    dest.writeLong(this.nombreJoueurs);
-	    dest.writeArray(this.cercle);
-	    dest.writeString(mMail);
-	    dest.writeString(mTwitter);
-	    dest.writeString(mGooglePlus);*/
+		dest.writeString(this.nomTable);
+		dest.writeArray(this.cercle.toArray());
+	    dest.writeArray(this.joueurs.toArray());
+	    dest.writeInt(this.nombreJoueurs);
+		dest.writeInt(this.niveauVerreDuRoi);
+	    dest.write(this.joueurPanda);
+		dest.writeString(this.joueurCaribou);
+	    dest.writeString(this.joueurMrFreeze);
+		dest.writeString(this.joueurMaitrePouces);
+	    dest.writeString(this.joueurSnakeEyes);
+	    dest.writeString(this.joueursDames);
 	}
-
 	
+	public static final Parcelable.Creator<Table> CREATOR = new Parcelable.Creator<Table>()
+	{
+	    @Override
+	    public Table createFromParcel(Parcel source)
+	    {
+	        return new Table(source);
+	    }
+	 
+	    @Override
+	    public Table[] newArray(int size)
+	    {
+	    return new Table[size];
+	    }
+	};
+	 
+	public Table(Parcel in) {
+		this.nomTable = in.readString();
+	    this.cercle = in.readString();
+	    this.joueurs = in.readString();
+	    this.nombreJoueurs = in.readString();
+	    this.niveauVerreDuRoi = in.readString();
+	    this.joueurPanda = in.readParcelable(Joueur.class.getClassLoader());
+	    this.joueurCaribou = in.readParcelable(Joueur.class.getClassLoader());
+	    this.joueurMrFreeze = in.readParcelable(Joueur.class.getClassLoader());;
+	    this.joueurMaitrePouces = in.readParcelable(Joueur.class.getClassLoader());;
+	    this.joueurSnakeEyes = in.readParcelable(Joueur.class.getClassLoader());;
+	    this.joueursDames = in.readArrayList(Joueur.class.getClassLoader());
+	}*/
+
+    
+    
+    
+    
 	
 
 }
