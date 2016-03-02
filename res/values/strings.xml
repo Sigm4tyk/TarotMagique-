@@ -10,5 +10,9 @@
     <string name="buttonPiocher">Piocher</string>
     <string name="checkBoxExcuse">Excuse</string>
     <string name="textViewJoueur">Joueur</string>
+    <string name="buttonListerAtouts">Regarder atouts</string>
+    <string name="labelActivityTableJoueur">Table de jeu</string>
+    <string name="labelActivityParametresConnexionPartie">Paramètres de connexion</string>
+    <string name="labelActivityRegarderAtouts">Vos atouts actuels</string>
 
 </resources>

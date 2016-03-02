@@ -22,10 +22,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity
             android:name=".TableJoueurActivity"
-            android:label="@string/app_name" >
+            android:label="@string/labelActivityTableJoueur" >
+        </activity>
+        <activity
+            android:name=".ListeAtoutsActivity"
+            android:label="@string/labelActivityRegarderAtouts" >
+        </activity>
+        <activity
+            android:name=".ParametresConnexionPartieActivity"
+            android:label="@string/labelActivityParametresConnexionPartie" >
         </activity>
     </application>
 

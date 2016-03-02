@@ -3,9 +3,11 @@ package com.example.tarotmagique;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 	
 	public class ListeAtoutsActivity extends Activity{
@@ -17,6 +19,10 @@ import android.widget.ListView;
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_liste_atouts);
+			
+			Intent intent = getIntent();
+			Table table = (Table) intent.getSerializableExtra("Table");
+			Toast.makeText(getApplicationContext(), table.getCarteCercle().toString(), Toast.LENGTH_LONG).show();
 			
 			ListView lv = (ListView) findViewById(R.id.listViewAtouts); 
 			

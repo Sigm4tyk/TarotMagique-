@@ -1,6 +1,5 @@
 package com.example.tarotmagique;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,35 +12,37 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	public Table table;
-	private Button button;
+	private Button buttonJouer, buttonRejoindre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		button = (Button) findViewById(R.id.buttonJouer);
-		table = new Table("Table", 4);
-		
-		button.setOnClickListener(new OnClickListener() {
+
+		buttonJouer = (Button) findViewById(R.id.buttonJouer);
+
+		buttonJouer.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 
-				//Toast.makeText(getApplicationContext(), "Ajouter une personne", Toast.LENGTH_LONG).show();
-				/*Intent intent = new Intent(MainActivity.this, TableJoueurActivity.class);
-				startActivity(intent);*/
-				
 				Intent intent = new Intent(MainActivity.this, TableJoueurActivity.class);
-				intent.putExtra("Table", table);
 				startActivity(intent);
-
-				
 			}
 		});
 
-		
+		buttonRejoindre = (Button) findViewById(R.id.buttonRejoindrePartie);
+
+		buttonRejoindre.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				Intent intent = new Intent(MainActivity.this, ParametresConnexionPartieActivity.class);
+				startActivity(intent);
+			}
+		});
+
 	}
 
 	@Override
