@@ -21,8 +21,11 @@ public class ParametresConnexionPartieActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				
+				// CREER SOCKET CLIENT
 
 				Intent intent = new Intent(ParametresConnexionPartieActivity.this, TableJoueurActivity.class);
+				intent.putExtra("Serveur", false);
 				startActivity(intent);
 			}
 		});

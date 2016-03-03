@@ -18,15 +18,10 @@ public class TableJoueurActivity extends Activity {
 		setContentView(R.layout.activity_table_joueur);
 
 		Intent intent = getIntent();
-		if (intent != null) {
-			if (intent.hasExtra("Table")) {
-				table = (Table) intent.getSerializableExtra("Table");
-			}
-		}
 
 		/////////////////////////////////// PARTIE SERVEUR \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-		if (this.table != null) 
-		{
+		//table = (Table) intent.getSerializableExtra("Table");
+		if (intent.getBooleanExtra("Serveur", true)) {
 			button = (Button) findViewById(R.id.buttonListerAtouts);
 
 			button.setOnClickListener(new OnClickListener() {
