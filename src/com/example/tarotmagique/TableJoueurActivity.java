@@ -9,28 +9,35 @@ import android.widget.Button;
 
 public class TableJoueurActivity extends Activity {
 
-	public Table table;
 	private Button button;
+	public Table table;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_table_joueur);
-		table = new Table("Table", 4);
 
-		button = (Button) findViewById(R.id.buttonListerAtouts);
-
-		button.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-
-				Intent intent = new Intent(TableJoueurActivity.this, ListeAtoutsActivity.class);
-				intent.putExtra("Table", table);
-				startActivity(intent);
-
+		Intent intent = getIntent();
+		if (intent != null) {
+			if (intent.hasExtra("Table")) {
+				table = (Table) intent.getSerializableExtra("Table");
 			}
-		});
+		}
+
+		if (this.table != null) {
+			button = (Button) findViewById(R.id.buttonListerAtouts);
+
+			button.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+
+					Intent intent = new Intent(TableJoueurActivity.this, ListeAtoutsActivity.class);
+					startActivity(intent);
+
+				}
+			});
+		}
 
 	}
 }

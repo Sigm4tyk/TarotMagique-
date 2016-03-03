@@ -10,6 +10,7 @@ import android.widget.Button;
 public class ParametresHebergerActivity extends Activity {
 
 	private Button buttonJouer;
+	public Table table;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +23,10 @@ public class ParametresHebergerActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
+				table = new Table("Table", 4);
 
 				Intent intent = new Intent(ParametresHebergerActivity.this, TableJoueurActivity.class);
+				intent.putExtra("Table", table);
 				startActivity(intent);
 			}
 		});
