@@ -3,13 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <EditText
+        android:id="@+id/editNomTable"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/editNomTable" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editNombreJoueurs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/editNombreJoueurs"/>
+
     <Button
         android:id="@+id/buttonJouer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="@string/buttonJouer" />
-    
+
+   
 
 </LinearLayout>

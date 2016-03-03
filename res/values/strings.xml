@@ -13,8 +13,10 @@
     <string name="buttonListerAtouts">Regarder atouts</string>
     <string name="labelActivityTableJoueur">Table de jeu</string>
     <string name="labelActivityParametresConnexionPartie">Paramètres de connexion</string>
-     <string name="labelActivityParametresHeberger">Paramètres de connexion</string>
+    <string name="labelActivityParametresHeberger">Paramètres de connexion</string>
     <string name="labelActivityRegarderAtouts">Vos atouts actuels</string>
+    <string name="editNomTable">Indiquer le nom de la partie</string>
+    <string name="editNombreJoueurs">Indiquer nombre de joueurs</string>
     <string name="buttonJouer">Jouer</string>
 
 </resources>
