@@ -28,6 +28,7 @@ public class TableJoueurActivity extends Activity {
 
 				@Override
 				public void onClick(View arg0) {
+					table = new Table("SAlu", 4);
 
 					Intent intent = new Intent(TableJoueurActivity.this, ListeAtoutsActivity.class);
 					startActivity(intent);
