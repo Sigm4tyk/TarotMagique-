@@ -34,6 +34,10 @@
             android:name=".ParametresConnexionPartieActivity"
             android:label="@string/labelActivityParametresConnexionPartie" >
         </activity>
+        <activity
+            android:name=".ParametresHebergerActivity"
+            android:label="@string/labelActivityParametresHeberger" >
+        </activity>
     </application>
 
 </manifest>

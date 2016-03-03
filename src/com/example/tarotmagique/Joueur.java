@@ -9,6 +9,7 @@ public class Joueur {
 	private Carte carteActuelle;
 	private ArrayList<Carte> atouts;
 	private ArrayList<Integer> listePouvoirs;
+	private ArrayList<Carte> historique;
 	private boolean dame;
 	private boolean excuse; // Indique si le joueur à l'excuse
 	private String regleCartePiochee; // Indique ce que l'on doit faire ce tour
@@ -18,6 +19,7 @@ public class Joueur {
 		this.nomJoueur = nomJoueur;
 		this.atouts = new ArrayList<Carte>();
 		this.listePouvoirs = new ArrayList<Integer>();
+		this.historique = new ArrayList<Carte>();
 		this.dame = false;
 		this.excuse = false;
 	}
@@ -135,6 +137,9 @@ public class Joueur {
 	// Actualise la carte actuelle
 	public void regarderCarte() {
 		this.carteActuelle = Table.getCarteCercle();
+		
+		// Mettre la carte en historique
+		this.historiser();
 		// Afficher la carte piochée au joueur
 		Table.enleverCarteCercle();
 	}
@@ -146,7 +151,10 @@ public class Joueur {
 	}
 
 	public void duel() {
-
+	}
+	
+	public void historiser() {
+		this.historique.add(this.carteActuelle);
 	}
 
 	public void utiliserExcuse() {
@@ -160,5 +168,9 @@ public class Joueur {
 
 	public ArrayList<Carte> getAtouts() {
 		return atouts;
+	}
+	
+	public ArrayList<Carte> getHistorique() {
+		return historique;
 	}
 }

@@ -148,7 +148,7 @@ public class Table implements Serializable {
 			break;
 		case 6:
 			// Roi
-			if (Table.niveauVerreDuRoi == 3) {
+			if (Table.niveauVerreDuRoi == 2) {
 
 			} else {
 				Table.niveauVerreDuRoi++;

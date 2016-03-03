@@ -17,14 +17,14 @@
         android:text="@string/buttonRejoindrePartie" />
 
     <Button
-        android:id="@+id/buttonJouer"
+        android:id="@+id/buttonHeberger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonRejoindrePartie"
         android:layout_alignLeft="@+id/buttonRejoindrePartie"
         android:layout_alignRight="@+id/buttonRejoindrePartie"
         android:layout_marginBottom="24dp"
-        android:text="@string/buttonJouer" />
+        android:text="@string/buttonHeberger" />
 
     <TextView
         android:id="@+id/textViewBienvenue"

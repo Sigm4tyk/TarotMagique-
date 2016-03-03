@@ -12,21 +12,21 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	private Button buttonJouer, buttonRejoindre;
+	private Button buttonHeberger, buttonRejoindre;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		buttonJouer = (Button) findViewById(R.id.buttonJouer);
+		buttonHeberger = (Button) findViewById(R.id.buttonHeberger);
 
-		buttonJouer.setOnClickListener(new OnClickListener() {
+		buttonHeberger.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 
-				Intent intent = new Intent(MainActivity.this, TableJoueurActivity.class);
+				Intent intent = new Intent(MainActivity.this, ParametresHebergerActivity.class);
 				startActivity(intent);
 			}
 		});
