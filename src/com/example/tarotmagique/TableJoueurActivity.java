@@ -24,7 +24,9 @@ public class TableJoueurActivity extends Activity {
 			}
 		}
 
-		if (this.table != null) {
+		/////////////////////////////////// PARTIE SERVEUR \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		if (this.table != null) 
+		{
 			button = (Button) findViewById(R.id.buttonListerAtouts);
 
 			button.setOnClickListener(new OnClickListener() {
@@ -37,6 +39,16 @@ public class TableJoueurActivity extends Activity {
 
 				}
 			});
+		} 
+		
+		
+		
+		
+		
+		
+		/////////////////////////////////// PARTIE CLIENT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+		else {
+			
 		}
 
 	}

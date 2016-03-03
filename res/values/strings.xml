@@ -18,5 +18,7 @@
     <string name="editNomTable">Indiquer le nom de la partie</string>
     <string name="editNombreJoueurs">Indiquer nombre de joueurs</string>
     <string name="buttonJouer">Jouer</string>
+    <string name="editTextIP">Indiquer IP hôte</string>
+    
 
 </resources>
