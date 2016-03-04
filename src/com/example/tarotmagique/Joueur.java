@@ -1,34 +1,39 @@
 package com.example.tarotmagique;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Joueur {
+public class Joueur implements Serializable{
 
+	private static int count = 0;
 	private int idJoueur;
 	private String nomJoueur;
 	private Carte carteActuelle;
 	private ArrayList<Carte> atouts;
 	private ArrayList<Integer> listePouvoirs;
-	private ArrayList<Carte> historique;
+	private ArrayList<Log> historique;
 	private boolean dame;
 	private boolean excuse; // Indique si le joueur à l'excuse
 	private String regleCartePiochee; // Indique ce que l'on doit faire ce tour
 
-	public Joueur(String nomJoueur, int idJoueur) {
-		this.idJoueur = idJoueur;
+	public Joueur (String nomJoueur) {
+		this.setIdJoueur(count++);
+		this.idJoueur++;
 		this.nomJoueur = nomJoueur;
 		this.atouts = new ArrayList<Carte>();
 		this.listePouvoirs = new ArrayList<Integer>();
-		this.historique = new ArrayList<Carte>();
+		this.historique = new ArrayList<Log>();
 		this.dame = false;
 		this.excuse = false;
 	}
 
-	public void piocher() {
-
+	// Boolean pour le verre du Roi si on l'augmente
+	public boolean piocher(Carte cartePiochee) {
 		int carte;
-		this.regarderCarte();
-		carte = this.carteActuelle.getNumeroCarte();
+		boolean roi = false;
+		this.carteActuelle = cartePiochee;
+		this.historique.add(new Log(this.carteActuelle));
+		carte = cartePiochee.getNumeroCarte();
 
 		if (carte == 77) {
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n"
@@ -74,22 +79,19 @@ public class Joueur {
 			// Cinq : Never say no to panda
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n"
 					+ "Never say no to Panda ! Personne n'a le droit de te dire no (peu importe la langue utilisée)";
-			Table.miseAJourDesPouvoirsTable(0, this);
-			this.listePouvoirs.add(0);
+			this.majListePouvoirs(0);
 
 		} else if (carte == 5 || carte == 19 || carte == 33 || carte == 47) {
 			// Six : Caribou !
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n"
 					+ "Vous êtes le caribou, laissez vous guider par l'appel de la nature !";
-			Table.miseAJourDesPouvoirsTable(1, this);
-			this.listePouvoirs.add(1);
+			this.majListePouvoirs(1);
 
 		} else if (carte == 6 || carte == 20 || carte == 34 || carte == 48) {
 			// Sept : Freeze
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n"
 					+ "Vous êtes le nouveau Mr. Freeze, dîtes 'FREEZE' quand bon vous semble, le premier à bouger boit une gorgée";
-			Table.miseAJourDesPouvoirsTable(2, this);
-			this.listePouvoirs.add(2);
+			this.majListePouvoirs(2);
 
 		} else if (carte == 7 || carte == 21 || carte == 35 || carte == 49) {
 			// Huit : Inventer une règle
@@ -108,41 +110,33 @@ public class Joueur {
 		} else if (carte == 10 || carte == 24 || carte == 38 || carte == 52) {
 			// Valet : Maître des pouces
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n" + "Vous êtes le Maître des pouces";
-			Table.miseAJourDesPouvoirsTable(3, this);
-			this.listePouvoirs.add(3);
+			this.majListePouvoirs(3);
 
 		} else if (carte == 11 || carte == 25 || carte == 39 || carte == 53) {
 			// Cavalier : Snake eyes
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n" + "Snake eyes !";
-			Table.miseAJourDesPouvoirsTable(4, this);
-			this.listePouvoirs.add(4);
+			this.majListePouvoirs(4);
+
 		} else if (carte == 12 || carte == 26 || carte == 40 || carte == 54) {
 			// Dame : Dame
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n" + "Vous êtes dame : Vodka, connecting people";
-			Table.miseAJourDesPouvoirsTable(5, this);
+			this.majListePouvoirs(5);
 			this.dame = true;
 
 		} else if (carte == 13 || carte == 27 || carte == 41 || carte == 55) {
 			// Roi : verre du Roi
 			this.regleCartePiochee = this.carteActuelle.toString() + "\n" + "Pour le Roi !!";
-			Table.miseAJourDesPouvoirsTable(6, this);
+			roi = true;
 		} else {
 			this.regleCartePiochee = "AHAHAHAHA";
 		}
 
 		// Test affichage
 		System.out.println(this.regleCartePiochee);
+
+		return roi;
 	}
 
-	// Actualise la carte actuelle
-	public void regarderCarte() {
-		this.carteActuelle = Table.getCarteCercle();
-		
-		// Mettre la carte en historique
-		this.historiser();
-		// Afficher la carte piochée au joueur
-		Table.enleverCarteCercle();
-	}
 
 	public void regarderAtouts() {
 		for (int i = 0; i < this.atouts.size(); i++) {
@@ -152,25 +146,49 @@ public class Joueur {
 
 	public void duel() {
 	}
-	
-	public void historiser() {
-		this.historique.add(this.carteActuelle);
-	}
+
 
 	public void utiliserExcuse() {
 		this.regleCartePiochee = "Excuse utilisée ! Que la force soit avec toi !";
 		this.excuse = false;
 	}
 
+	public void majListePouvoirs(int typePouvoir) {
+		for (int i = 0; i < this.listePouvoirs.size(); i++) {
+			if (this.listePouvoirs.get(i) == typePouvoir) {
+				this.listePouvoirs.remove(i);
+			}
+		}
+		this.listePouvoirs.add(typePouvoir);
+	}
+
 	public ArrayList<Integer> getListePouvoirs() {
-		return listePouvoirs;
+		return this.listePouvoirs;
 	}
 
 	public ArrayList<Carte> getAtouts() {
-		return atouts;
+		return this.atouts;
 	}
 	
-	public ArrayList<Carte> getHistorique() {
-		return historique;
+	public ArrayList<Log> getHistorique() {
+		return this.historique;
+	}
+
+
+	public int getIdJoueur() {
+		return idJoueur;
+	}
+
+	public void setIdJoueur(int count) {
+		this.idJoueur = count;
+	}
+
+	public void setNomJoueur(int nomJoueur) {
+		this.nomJoueur += " " + nomJoueur;
+	}
+
+	@Override
+	public String toString() {
+		return this.nomJoueur ;
 	}
 }

@@ -15,10 +15,18 @@
     <string name="labelActivityParametresConnexionPartie">Paramètres de connexion</string>
     <string name="labelActivityParametresHeberger">Paramètres de connexion</string>
     <string name="labelActivityRegarderAtouts">Vos atouts actuels</string>
+    <string name="labelActivityHistorique">Cartes déjà tirées</string>
     <string name="editNomTable">Indiquer le nom de la partie</string>
     <string name="editNombreJoueurs">Indiquer nombre de joueurs</string>
     <string name="buttonJouer">Jouer</string>
     <string name="editTextIP">Indiquer IP hôte</string>
-    
+    <string name="textViewServerIP">Aucune adresse IP reconnue</string>
+    <string name="textViewLabelServerIP">Votre addresse IP est</string>
+    <string name="textViewClientMessage">Defaut</string>
+    <string name="textViewServerPort">Pas de port</string>
+    <string name="textViewServerMessage">Defaut2</string>
+    <string name="buttonHistorique">Cartes déjà tirées</string>
+
+
 
 </resources>

@@ -1,14 +1,19 @@
 package com.example.tarotmagique;
 
 
-public class Carte {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class Carte implements Serializable{
     //Numéros allant de 0 à 77, selon les numéro traiter couleurs etc
     //0 à 13 coeur 14 à 27 carreau 28 à 41 trèfle 42 à 55 pique 56 à 76 atouts 77 excuse
     private int numeroCarte;
     
     //Pour version base de données
     private String description;
-    private Regle regle; 
+    private Log regle; 
     
     
     public  Carte(int numeroCarte) {
@@ -16,11 +21,11 @@ public class Carte {
     }
     
     //Pour version base de données
-    public  Carte(int numeroCarte, String description, Regle regle) {
+    public  Carte(int numeroCarte, String description, Log regle) {
         this.numeroCarte = numeroCarte;
         this.regle = regle;
     }
-    
+
     public int getNumeroCarte(){
         return this.numeroCarte;
     }
@@ -188,4 +193,6 @@ public class Carte {
                 return "Error";
         }
     }
+
+
 }
