@@ -22,18 +22,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/buttonHistorique" />
-
-    <TextView
-        android:id="@+id/textViewServerMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextViewServer" />
-
-    <TextView
-        android:id="@+id/textViewClientMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextViewClient" />
     
     
 
